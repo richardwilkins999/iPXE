@@ -1,0 +1,11 @@
+#!ipxe
+
+# Set the URL for your ISO file
+set iso-url https://github.com/richardwilkins999/iPXE/releases/download/V8.5.4/SnareServer-v8.5.4.iso
+
+# Create a new RAM disk and attach it as a drive
+initrd ${iso-url}
+
+# Boot from the ISO
+kernel memdisk iso raw
+boot
