@@ -11,6 +11,7 @@ systemctl isolate graphical.target
 useradd vncuser1
 #passwd vnc
 mkdir -p /home/vncuser1/.vnc
+chown vncuser1:vncuser1 /home/vncuser1/.vnc
 touch /home/vncuser1/.vnc/config
 echo 'session=gnome' > /home/vncuser1/.vnc/config
 echo ':1=vncuser1' >> /etc/tigervnc/vncserver.users
@@ -23,6 +24,7 @@ cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.servi
 firewall-cmd --permanent --zone=public --add-port 5901/tcp
 firewall-cmd  --reload
 
+#install VirtMgr
 
 
 
