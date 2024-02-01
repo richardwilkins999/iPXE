@@ -10,6 +10,7 @@ systemctl isolate graphical.target
 #Create the User Env
 useradd vncuser1
 #passwd vnc
+mkdir -p /home/vncuser1/.vnc
 touch /home/vncuser1/.vnc/config
 echo 'session=gnome' > /home/vncuser1/.vnc/config
 echo ':1=vncuser1' >> /etc/tigervnc/vncserver.users
