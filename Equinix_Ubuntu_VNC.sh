@@ -29,6 +29,9 @@ export XDG_MENU_PREFIX="gnome-flashback-"
 gnome-session --session=gnome-flashback-metacity --disable-acceleration-check &
 EOF
 
+#run update again  ?:-)
+apt -y update
+
 #open the ports
 echo "Opening FW Ports"
 ufw allow 5901/tcp
