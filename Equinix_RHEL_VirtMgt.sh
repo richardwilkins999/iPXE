@@ -66,6 +66,13 @@ ONBOOT=yes
 VLAN=yes
 EOF
 
+#Completing updates
+dnf -y update
+dnf -y upgrade
+
+#Delay the Reboot until after user config
+#systemctl reboot
+
 #print public IP address
 dnf -y install jq
 PUBLIC_IP=$(curl -s https://metadata.platformequinix.com/metadata | jq -r ".network.addresses[] | select(.public == true) | select(.address_family == 4) | .address")
@@ -75,4 +82,9 @@ echo "Public IP is : $PUBLIC_IP"
 echo "Please start VNC manually and set the VNCPassword by running the following commands"
 echo "su - $TARGET_USER"
 echo "vncserver"
+echo ""
+
+#Please reboot
+echo "please reboot the server when you have completed the configuration"
+
 exit
