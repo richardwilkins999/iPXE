@@ -16,6 +16,8 @@ read TARGET_USER_PASSWORD
 echo "3"
 useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
 
+exit
+
 #run update
 apt -y upgrade
 apt -y update
