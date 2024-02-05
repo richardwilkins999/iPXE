@@ -10,7 +10,7 @@ read -p "Please enter the Password for $TARGET_USER : " TARGET_USER_PASSWORD
 IF_NAME="bond0"
 
 # Ask user for the VLAN ID
-read "Please enter the VLAN ID to attach to $IF_NAME" VLAN_ID
+read "Please enter the VLAN ID to attach to $IF_NAME : " VLAN_ID
 
 # Ensure the VLAN ID is provided
 if [ -z "$VLAN_ID" ]; then
@@ -26,7 +26,7 @@ systemctl set-default graphical.target
 systemctl isolate graphical.target
 
 #Create the User Env
-echo "Creating user:"$TARGET_USER
+echo "Creating user : "$TARGET_USER
 useradd -m $TARGET_USER && echo '$TARGET_USER:$TARGET_USER_PASSWORD' | chpasswd
 
 #set VNC Env
@@ -106,3 +106,4 @@ echo "Please start VNC manually and set the VNCPassword by running the following
 echo "su - $TARGET_USER"
 echo "vncserver"
 
+exit
