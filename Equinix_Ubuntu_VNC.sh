@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # The userid who will run VNC
+echo "1"
 read -p "Please enter the UserID for VNC:" TARGET_USER
 
 # Ask user Password
+echo "2"
 read -p "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
 
 #Create VNCUser and set password
