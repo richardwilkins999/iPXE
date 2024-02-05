@@ -8,6 +8,9 @@ TARGET_USER_PASSWORD="snaresnare"
 #Create VNCUser
 useradd -m $TARGET_USER && echo '$TARGET_USER:$TARGET_USER_PASSWORD' | chpasswd
 
+#run update
+apt -y update
+
 #Install TigerVNC   ** Not tightvnc **
 apt install -y tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer
 apt install -y ubuntu-gnome-desktop
