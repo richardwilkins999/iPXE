@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # The userid who will run VNC
-read "Please enter the UserID for VNC:" TARGET_USER
+read -p "Please enter the UserID for VNC:" TARGET_USER
 
 # Ask user for the VLAN ID
-read "Please enter the VLAN ID:" VLAN_ID
+read -p "Please enter the VLAN ID:" VLAN_ID
 
 # Ask user Password
-read "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
+read -p "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
 
 #Create VNCUser and set password
 useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
