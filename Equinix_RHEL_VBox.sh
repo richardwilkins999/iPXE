@@ -15,11 +15,11 @@ if [ -z "$VLAN_ID" ]; then
 fi
 
 #Download the Repo defination
-#wget https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
+wget https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
 mv virtualbox.repo /etc/yum.repos.d/
 
 #Download the Oracle Keys
-#wget -q https://www.virtualbox.org/download/oracle_vbox.asc
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc
 rpm --import oracle_vbox.asc
 
 #Install configure the Repo
@@ -63,7 +63,6 @@ EOF
 #print public IP address
 PUBLIC_IP=$(curl -s https://metadata.platformequinix.com/metadata | jq -r ".network.addresses[] | select(.public == true) | select(.address_family == 4) | .address")
 echo "Public IP is : $PUBLIC_IP"
-
 
 #Please manually install the VBOX extensions
 echo "VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack"
