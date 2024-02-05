@@ -1,8 +1,10 @@
 #!/bin/sh
 
-# The username for whom to set the VNC password
-TARGET_USER="vncuser1"
-TARGET_USER_PASSWORD="snaresnare"
+# The userid who will run VNC
+read -p "Please enter the UserID for VNC:" TARGET_USER
+
+# Ask user Password
+read -p "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
 
 #Create VNCUser and set password
 useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
@@ -14,7 +16,6 @@ apt -y update
 #Install TigerVNC   ** Not tightvnc **
 apk add bash curl jq openssl sudo nano git pciutils gzip p7zip cpio tar unzip xarchiver ethtool
 apt install -y tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer
-#apt install -y xfce4 xfce4-goodies
 apt install -y ubuntu-gnome-desktop gnome-session gnome-terminal
 #systemctl enable gdm
 #systemctl start gdm
@@ -45,8 +46,8 @@ echo "Please start VNC manually and set the VNCPassword"
 echo "su - $TARGET_USER"
 echo "vncserver"
 
-
 #print public IP address
+apt install -y jq
 PUBLIC_IP=$(curl -s https://metadata.platformequinix.com/metadata | jq -r ".network.addresses[] | select(.public == true) | select(.address_family == 4) | .address")
 echo "Public IP is : $PUBLIC_IP"
 
