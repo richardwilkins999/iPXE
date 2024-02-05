@@ -35,7 +35,8 @@ usermod -aG vboxusers $TARGET_USER
 wget https://download.virtualbox.org/virtualbox/7.0.10/Oracle_VM_VirtualBox_Extension_Pack-7.0.10.vbox-extpack
 /sbin/vboxconfig
 
-VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack
+#Ummm this does not work if its already installed
+#VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack
 
 #Install the Vlan Tagging
 #dnf install vlan
