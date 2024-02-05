@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # The userid who will run VNC
-echo "1"
-read -p "Please enter the UserID for VNC:" TARGET_USER
+echo "Please enter the UserID for VNC:"
+read TARGET_USER
 
 # Ask user Password
 echo "2"
