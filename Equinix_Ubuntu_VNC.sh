@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # The userid who will run VNC
 read -p "Please enter the UserID for VNC:" TARGET_USER
