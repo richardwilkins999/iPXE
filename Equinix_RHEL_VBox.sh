@@ -15,11 +15,11 @@ if [ -z "$VLAN_ID" ]; then
 fi
 
 #Download the Repo defination
-wget https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
+#wget https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
 mv virtualbox.repo /etc/yum.repos.d/
 
 #Download the Oracle Keys
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc
+#wget -q https://www.virtualbox.org/download/oracle_vbox.asc
 rpm --import oracle_vbox.asc
 
 #Install configure the Repo
@@ -44,6 +44,11 @@ modprobe 8021q
 touch /etc/modules-load.d/8021q.conf
 echo "8021q" | tee /etc/modules-load.d/8021q.conf
 
+
+echo "ip link add link $IF_NAME name $IF_NAME.$VLAN_ID type vlan id $VLAN_ID"
+echo "ip link set dev $IF_NAME.$VLAN_ID up"
+
+
 ip link add link $IF_NAME name $IF_NAME.$VLAN_ID type vlan id $VLAN_ID
 ip link set dev $IF_NAME.$VLAN_ID up
 
@@ -62,3 +67,9 @@ echo "Public IP is : $PUBLIC_IP"
 
 #Please manually install the VBOX extensions
 echo "VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack"
+
+#removing for now
+#dnf -y update
+#dnf -y upgrade
+#systemctl reboot
+
