@@ -37,8 +37,6 @@ ip link set dev $IF_NAME.$VLAN_ID up
 
 
 #Make the VLAN permenent
-touch /etc/sysconfig/network-scripts/$IF_NAME.$VLAN_ID
-
 cat > /etc/sysconfig/network-scripts/ifcfg-$IF_NAME.$VLAN_ID <<EOF
 DEVICE=$IF_NAME.$VLAN_ID
 BOOTPROTO=none
