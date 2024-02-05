@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # The userid who will run VNC
-read -p  "Please enter the UserID for VNC:" TARGET_USER
+read "Please enter the UserID for VNC:" TARGET_USER
 
 # Ask user for the VLAN ID
-echo "Please enter the VLAN ID:"
+echo -n "Please enter the VLAN ID:"
 read VLAN_ID
 
 # Ask user Password
