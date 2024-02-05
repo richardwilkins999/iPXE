@@ -4,9 +4,6 @@
 read -p "Please enter the UserID for VNC: " TARGET_USER
 read -p "Please enter the Password for $TARGET_USER: " TARGET_USER_PASSWORD
 
-#Create VNCUser and set password
-useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
-
 #Interface Name
 IF_NAME="bond0"
 
@@ -19,13 +16,15 @@ if [ -z "$VLAN_ID" ]; then
     exit 1
 fi
 
+#Create VNCUser and set password
+useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
+
 ## Install VNC
 #run update
 apt -y upgrade
 apt -y update
 
 #Install TigerVNC   ** Not tightvnc **
-apk add bash curl jq openssl sudo nano git pciutils gzip p7zip cpio tar unzip xarchiver ethtool
 apt -y install tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer
 apt -y install ubuntu-gnome-desktop gnome-session gnome-terminal
 #systemctl enable gdm
@@ -52,6 +51,7 @@ ufw reload
 ### install VirtMgr
 
 #Just to be sure
+apk add bash curl jq openssl sudo nano git pciutils gzip p7zip cpio tar unzip xarchiver ethtool
 apt -y install qemu qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 apt -y update
 
@@ -77,7 +77,6 @@ EOF
 systemctl restart networking.service
 
 #print public IP address
-apt -y install jq
 PUBLIC_IP=$(curl -s https://metadata.platformequinix.com/metadata | jq -r ".network.addresses[] | select(.public == true) | select(.address_family == 4) | .address")
 echo "Public IP is : $PUBLIC_IP"
 
