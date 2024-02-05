@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# The username to run VirtManager
-TARGET_USER="vncuser1"
+# The userid who will run VNC
+read -p "Please enter the UserID for VNC:" TARGET_USER
 
 #Interface Name
 IF_NAME="bond0"
