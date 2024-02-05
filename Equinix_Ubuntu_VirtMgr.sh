@@ -11,7 +11,7 @@ useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpas
 IF_NAME="bond0"
 
 # Ask user for the VLAN ID
-read -p "Please enter the VLAN ID for $IF_NAME" VLAN_ID
+read -p "Please enter the VLAN ID for $IF_NAME " VLAN_ID
 
 # Ensure the VLAN ID is provided
 if [ -z "$VLAN_ID" ]; then
