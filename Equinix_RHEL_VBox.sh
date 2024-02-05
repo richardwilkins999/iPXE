@@ -23,7 +23,7 @@ rpm --import oracle_vbox.asc
 dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 
 #Install Kernal debug
-dnf install kernel-devel kernel-devel-4.18.0-513.9.1.el8_9.x86_64
+dnf install -y kernel-devel kernel-devel-4.18.0-513.9.1.el8_9.x86_64
 
 echo "Installing VBOX"
 dnf install -y VirtualBox-7.0
@@ -53,3 +53,7 @@ BOOTPROTO=none
 ONBOOT=yes
 VLAN=yes
 EOF
+
+
+PUBLIC_IP=$(curl -s https://metadata.platformequinix.com/metadata | jq -r ".network.addresses[] | select(.public == true) | select(.address_family == 4) | .address")
+echo "Public IP is : $PUBLIC_IP"
