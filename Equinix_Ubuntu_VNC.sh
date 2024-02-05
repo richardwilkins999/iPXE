@@ -51,4 +51,8 @@ echo "su - $TARGET_USER"
 echo "vncserver"
 
 
+#print public IP address
+PUBLIC_IP=$(curl -s https://metadata.platformequinix.com/metadata | jq -r ".network.addresses[] | select(.public == true) | select(.address_family == 4) | .address")
+echo "Public IP is : $PUBLIC_IP"
+
 echo "please reboot your server"
