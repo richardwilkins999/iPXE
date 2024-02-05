@@ -4,14 +4,13 @@
 echo "Please enter the UserID for VNC:"
 read TARGET_USER
 
-
 # Ask user for the VLAN ID
 echo "Please enter the VLAN ID:"
 read VLAN_ID
 
 # Ask user Password
-echo "2"
-read -p "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
+echo "Please enter the Password for $TARGET_USER:"
+read TARGET_USER_PASSWORD
 
 #Create VNCUser and set password
 echo "3"
