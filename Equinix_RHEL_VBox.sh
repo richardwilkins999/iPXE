@@ -1,6 +1,9 @@
 #!/bin/sh
 TARGET_USER="vncuser1"
 
+#Interface Name
+IF_NAME="bond0"
+
 # Ask user for the VLAN ID
 echo "Please enter the VLAN ID:"
 read VLAN_ID
@@ -41,7 +44,7 @@ modprobe 8021q
 touch /etc/modules-load.d/8021q.conf
 echo "8021q" | tee /etc/modules-load.d/8021q.conf
 
-ip link add link bond0 name $IF_NAME.$VLAN_ID type vlan id $VLAN_ID
+ip link add link $IF_NAME name $IF_NAME.$VLAN_ID type vlan id $VLAN_ID
 ip link set dev $IF_NAME.$VLAN_ID up
 
 #Make the VLAN permenent
