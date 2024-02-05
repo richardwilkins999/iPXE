@@ -12,8 +12,6 @@ read "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
 #Create VNCUser and set password
 useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
 
-exit
-
 #run update
 apt -y upgrade
 apt -y update
