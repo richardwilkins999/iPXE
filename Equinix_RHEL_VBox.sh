@@ -1,12 +1,16 @@
 #!/bin/sh
-TARGET_USER="vncuser1"
+
+# The userid who will run VNC
+read -p "Please enter the UserID for VNC:" TARGET_USER
+
+# Ask user Password
+read -p "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
 
 #Interface Name
 IF_NAME="bond0"
 
 # Ask user for the VLAN ID
-echo "Please enter the VLAN ID:"
-read VLAN_ID
+read "Please enter the VLAN ID to attach to $IF_NAME" VLAN_ID
 
 # Ensure the VLAN ID is provided
 if [ -z "$VLAN_ID" ]; then
@@ -61,6 +65,7 @@ VLAN=yes
 EOF
 
 #print public IP address
+dnf install -y jq
 PUBLIC_IP=$(curl -s https://metadata.platformequinix.com/metadata | jq -r ".network.addresses[] | select(.public == true) | select(.address_family == 4) | .address")
 echo "Public IP is : $PUBLIC_IP"
 
