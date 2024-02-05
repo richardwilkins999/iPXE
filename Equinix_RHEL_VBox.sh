@@ -35,9 +35,6 @@ usermod -aG vboxusers $TARGET_USER
 wget https://download.virtualbox.org/virtualbox/7.0.10/Oracle_VM_VirtualBox_Extension_Pack-7.0.10.vbox-extpack
 /sbin/vboxconfig
 
-#Ummm this does not work if its already installed
-#VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack
-
 #Install the Vlan Tagging
 #dnf install vlan
 modprobe 8021q
@@ -55,6 +52,10 @@ ONBOOT=yes
 VLAN=yes
 EOF
 
-
+#print public IP address
 PUBLIC_IP=$(curl -s https://metadata.platformequinix.com/metadata | jq -r ".network.addresses[] | select(.public == true) | select(.address_family == 4) | .address")
 echo "Public IP is : $PUBLIC_IP"
+
+
+#Please manually install the VBOX extensions
+echo "VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack"
