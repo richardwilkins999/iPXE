@@ -23,6 +23,7 @@ echo ':1=$TARGET_USER' >> /etc/tigervnc/vncserver.users
 cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.service
 
 #open the ports
+echo "Opening FW Ports"
 firewall-cmd --permanent --zone=public --add-port 5901/tcp
 firewall-cmd  --reload
 
