@@ -12,6 +12,7 @@ apt -y upgrade
 apt -y update
 
 #Install TigerVNC   ** Not tightvnc **
+apk add bash curl jq openssl sudo nano git pciutils gzip p7zip cpio tar unzip xarchiver ethtool
 apt install -y tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer
 #apt install -y xfce4 xfce4-goodies
 apt install -y ubuntu-gnome-desktop gnome-session gnome-terminal
