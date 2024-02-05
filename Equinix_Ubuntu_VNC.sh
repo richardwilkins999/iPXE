@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 # The username for whom to set the VNC password
 TARGET_USER="vncuser1"
 TARGET_USER_PASSWORD="snaresnare"
@@ -29,7 +28,6 @@ export XDG_CURRENT_DESKTOP="GNOME-Flashback:GNOME"
 export XDG_MENU_PREFIX="gnome-flashback-"
 gnome-session --session=gnome-flashback-metacity --disable-acceleration-check &
 EOF
-
 
 #open the ports
 echo "Opening FW Ports"
