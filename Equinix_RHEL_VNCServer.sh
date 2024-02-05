@@ -2,7 +2,7 @@
 
 # The username for whom to set the VNC password
 TARGET_USER="vncuser1"
-TARGET_USER_PASSWORD="admin"
+TARGET_USER_PASSWORD="snaresnare"
 
 yum -y install tigervnc-server tigervnc
 yum -y group install GNOME base-x
