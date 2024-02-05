@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # The userid and password of who will run VNC and VirtMgr
-read -p "Please enter the UserID for VNC:" TARGET_USER
-read -p "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
+read -p "Please enter the UserID for VNC: " TARGET_USER
+read -p "Please enter the Password for $TARGET_USER: " TARGET_USER_PASSWORD
 
 # Ask user for the VLAN ID
-read -p  "Please enter the VLAN ID for $IF_NAME:" VLAN_ID
+read -p  "Please enter the VLAN ID for $IF_NAME: " VLAN_ID
 
 # Ensure the VLAN ID is provided
 if [ -z "$VLAN_ID" ]; then
@@ -24,7 +24,7 @@ systemctl set-default graphical.target
 systemctl isolate graphical.target
 
 #Create the User Env
-echo "Creating user:"$TARGET_USER
+echo "Creating user: "$TARGET_USER
 useradd -m $TARGET_USER && echo '$TARGET_USER:$TARGET_USER_PASSWORD' | chpasswd
 
 #set VNC Env
