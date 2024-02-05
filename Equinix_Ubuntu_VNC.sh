@@ -8,6 +8,7 @@ TARGET_USER_PASSWORD="snaresnare"
 useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
 
 #run update
+apt -y upgrade
 apt -y update
 
 #Install TigerVNC   ** Not tightvnc **
