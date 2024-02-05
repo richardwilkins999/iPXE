@@ -5,8 +5,7 @@
 TARGET_USER="vncuser1"
 TARGET_USER_PASSWORD="snaresnare"
 
-#Create VNCUser
-#useradd -m $TARGET_USER && echo '$TARGET_USER:$TARGET_USER_PASSWORD' | chpasswd
+#Create VNCUser and set password
 useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
 
 #run update
