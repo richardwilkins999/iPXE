@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # The username for whom to set the VNC password
-TARGET_USER="vncuser1"
+TARGET_USER="root"
 TARGET_USER_PASSWORD="snaresnare"
 
 #Create VNCUser and set password
