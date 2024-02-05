@@ -27,7 +27,7 @@ firewall-cmd --permanent --zone=public --add-port 5901/tcp
 firewall-cmd  --reload
 
 #Do not Start the VNCServer, in the script
-echo "Please start manually as the VNCUser and then set the VNCPassword
+echo "Please start manually as the VNCUser and then set the VNCPassword"
 echo "su - $TARGET_USER"
 echo "vncserver"
 
