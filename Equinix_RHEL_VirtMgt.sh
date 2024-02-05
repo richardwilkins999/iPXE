@@ -3,12 +3,11 @@
 #Interface Name
 IF_NAME="bond0"
 
-# The username for whom to set the VirtManager will run as
-TARGET_USER="vncuser1"
+# The userid who will run VNC
+read -p "Please enter the UserID for VNC:" TARGET_USER
 
 # Ask user for the VLAN ID
-echo "Please enter the VLAN ID:"
-read VLAN_ID
+read -p  "Please enter the VLAN ID for $IF_NAME:" VLAN_ID
 
 # Ensure the VLAN ID is provided
 if [ -z "$VLAN_ID" ]; then
