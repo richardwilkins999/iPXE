@@ -13,8 +13,8 @@ apt -y update
 
 #Install TigerVNC   ** Not tightvnc **
 apt install -y tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer
-apt install -y xfce4 xfce4-goodies
-#apt install -y ubuntu-gnome-desktop
+#apt install -y xfce4 xfce4-goodies
+apt install -y ubuntu-gnome-desktop gnome-session gnome-terminal
 #systemctl enable gdm
 #systemctl start gdm
 
@@ -25,17 +25,10 @@ chown $TARGET_USER:$TARGET_USER /home/$TARGET_USER/.vnc
 #Make Creat the VNC config
 cat > /home/$TARGET_USER/.vnc/xstartup <<EOF
 #!/bin/sh
-# Start up the standard system desktop
-unset SESSION_MANAGER
-unset DBUS_SESSION_BUS_ADDRESS
-/usr/bin/startxfce4
-[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-x-window-manager &
+/usr/bin/gnome-session
 EOF
 
 chmod +x /home/$TARGET_USER/.vnc/xstartup
-
 
 #run update again  ?:-)
 apt -y update
@@ -43,6 +36,7 @@ apt -y update
 #open the ports
 echo "Opening FW Ports"
 ufw allow 5901/tcp
+ufw allow 5902/tcp
 ufw reload
 
 #Do not Start the VNCServer, in the script
