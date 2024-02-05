@@ -9,7 +9,11 @@ systemctl isolate graphical.target
 
 #Create the User Env
 useradd vncuser1
+
 #passwd vnc
+
+
+#set VNC Env
 mkdir -p /home/vncuser1/.vnc
 chown vncuser1:vncuser1 /home/vncuser1/.vnc
 touch /home/vncuser1/.vnc/config
@@ -25,7 +29,8 @@ firewall-cmd --permanent --zone=public --add-port 5901/tcp
 firewall-cmd  --reload
 
 #install VirtMgr
-
+dnf install virt-install virt-viewer -y
+dnf install virt-manager -y
 
 
 
