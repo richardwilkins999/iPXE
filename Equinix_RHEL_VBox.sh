@@ -1,9 +1,7 @@
 #!/bin/sh
 
-# The userid who will run VNC
+# The userid and password of who will run VNC
 read -p "Please enter the UserID for VNC : " TARGET_USER
-
-# Ask user Password for VNC User
 read -p "Please enter the Password for $TARGET_USER : " TARGET_USER_PASSWORD
 
 #Interface Name
@@ -85,11 +83,11 @@ ONBOOT=yes
 VLAN=yes
 EOF
 
-#removing for now
+#Completing updates
 dnf -y update
 dnf -y upgrade
 
-#Reboot after config
+#Delay the Reboot until after user config
 #systemctl reboot
 
 #print public IP address
@@ -98,6 +96,7 @@ PUBLIC_IP=$(curl -s https://metadata.platformequinix.com/metadata | jq -r ".netw
 echo "Public IP is : $PUBLIC_IP"
 
 #Please manually install the VBOX extensions
+echo "Please configure the Oracle Extension packs by running the following command"
 echo "VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*.vbox-extpack"
 echo ""
 
@@ -105,5 +104,9 @@ echo ""
 echo "Please start VNC manually and set the VNCPassword by running the following commands"
 echo "su - $TARGET_USER"
 echo "vncserver"
+echo ""
+
+#Please reboot
+echo "please reboot the server when you have completed the configuration"
 
 exit
