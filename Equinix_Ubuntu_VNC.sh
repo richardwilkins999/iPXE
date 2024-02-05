@@ -41,3 +41,6 @@ ufw allow 5901/tcp
 echo "Please start VNC manually and set the VNCPassword"
 echo "su - $TARGET_USER"
 echo "vncserver"
+
+
+echo "please reboot your server"
