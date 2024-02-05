@@ -11,6 +11,7 @@ systemctl set-default graphical.target
 systemctl isolate graphical.target
 
 #Create the User Env
+echo "Creating user:"$TARGET_USER
 useradd -m $TARGET_USER && echo '$TARGET_USER:$TARGET_USER_PASSWORD' | chpasswd
 
 #set VNC Env
