@@ -7,8 +7,7 @@ read -p "Please enter the UserID for VNC:" TARGET_USER
 IF_NAME="bond0"
 
 # Ask user for the VLAN ID
-echo "Please enter the VLAN ID:"
-read VLAN_ID
+read -p "Please enter the VLAN ID for $IF_NAME" VLAN_ID
 
 # Ensure the VLAN ID is provided
 if [ -z "$VLAN_ID" ]; then
