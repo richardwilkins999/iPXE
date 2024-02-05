@@ -25,6 +25,9 @@ cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.servi
 firewall-cmd --permanent --zone=public --add-port 5901/tcp
 firewall-cmd  --reload
 
+#Do not Start the VNCServer, in the script
+#please start manually and then set the VNCPassword
+
 
 
 
