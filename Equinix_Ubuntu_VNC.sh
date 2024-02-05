@@ -9,6 +9,7 @@ echo "2"
 read -p "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
 
 #Create VNCUser and set password
+echo "3"
 useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
 
 #run update
