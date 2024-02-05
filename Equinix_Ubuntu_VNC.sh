@@ -4,15 +4,12 @@
 read "Please enter the UserID for VNC:" TARGET_USER
 
 # Ask user for the VLAN ID
-echo -n "Please enter the VLAN ID:"
-read VLAN_ID
+read "Please enter the VLAN ID:" VLAN_ID
 
 # Ask user Password
-echo "Please enter the Password for $TARGET_USER:"
-read TARGET_USER_PASSWORD
+read "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
 
 #Create VNCUser and set password
-echo "3"
 useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
 
 exit
