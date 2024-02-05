@@ -28,9 +28,7 @@ cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.servi
 firewall-cmd --permanent --zone=public --add-port 5901/tcp
 firewall-cmd  --reload
 
-#install VirtMgr
-dnf install virt-install virt-viewer -y
-dnf install virt-manager -y
+
 
 
 
