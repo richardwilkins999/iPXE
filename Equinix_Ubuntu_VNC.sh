@@ -9,8 +9,8 @@ TARGET_USER_PASSWORD="snaresnare"
 useradd -m $TARGET_USER && echo '$TARGET_USER:$TARGET_USER_PASSWORD' | chpasswd
 
 #Install TigerVNC   ** Not tightvnc **
-apt install tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer
-apt install ubuntu-gnome-desktop
+apt install -y tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer
+apt install -y ubuntu-gnome-desktop
 systemctl enable gdm
 systemctl start gdm
 
