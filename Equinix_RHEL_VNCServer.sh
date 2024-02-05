@@ -1,8 +1,10 @@
 #!/bin/sh
 
-# The username for whom to set the VNC password
-TARGET_USER="vncuser1"
-TARGET_USER_PASSWORD="snaresnare"
+# The userid who will run VNC
+read -p "Please enter the UserID for VNC:" TARGET_USER
+
+# Ask user Password
+read -p "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
 
 yum -y install tigervnc-server tigervnc
 yum -y group install GNOME base-x
@@ -28,7 +30,7 @@ firewall-cmd --permanent --zone=public --add-port 5901/tcp
 firewall-cmd  --reload
 
 #Do not Start the VNCServer, in the script
-echo "Please start VNC manually and set the VNCPassword"
+echo "Please start VNC manually and set the VNCPassword by running the following commands"
 echo "su - $TARGET_USER"
 echo "vncserver"
 
