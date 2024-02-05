@@ -12,4 +12,6 @@ rpm --import oracle_vbox.asc
 dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 
 echo "Installing VBOX"
-dnf install -y VirtualBox
+dnf install -y VirtualBox-7.0
+usermod -aG vboxusers root
+/usr/lib/virtualbox/vboxdrv.sh setup
