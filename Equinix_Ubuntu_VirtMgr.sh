@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # The userid and password for who will run VNC
-read -p "Please enter the UserID for VNC:" TARGET_USER
-read -p "Please enter the Password for $TARGET_USER:" TARGET_USER_PASSWORD
+read -p "Please enter the UserID for VNC: " TARGET_USER
+read -p "Please enter the Password for $TARGET_USER: " TARGET_USER_PASSWORD
 
 #Create VNCUser and set password
 useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpasswd
@@ -11,7 +11,7 @@ useradd -m $TARGET_USER && echo "${TARGET_USER}:${TARGET_USER_PASSWORD}" | chpas
 IF_NAME="bond0"
 
 # Ask user for the VLAN ID
-read -p "Please enter the VLAN ID for $IF_NAME " VLAN_ID
+read -p "Please enter the VLAN ID for $IF_NAME: " VLAN_ID
 
 # Ensure the VLAN ID is provided
 if [ -z "$VLAN_ID" ]; then
@@ -46,14 +46,14 @@ chmod +x /home/$TARGET_USER/.vnc/xstartup
 #open the ports
 echo "Opening FW Ports"
 ufw allow 5901/tcp
-ufw allow 5902/tcp
+#ufw allow 5902/tcp
 ufw reload
 
 ### install VirtMgr
 
 #Just to be sure
-apt -y update
 apt -y install qemu qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+apt -y update
 
 #Allow the user access to KVM
 adduser $TARGET_USER libvirt
@@ -85,7 +85,9 @@ echo "Public IP is : $PUBLIC_IP"
 echo "Please start VNC manually and set the VNCPassword"
 echo "su - $TARGET_USER"
 echo "vncserver"
+echo ""
 
-echo "Also please reboot your server"
+#Please reboot when finished
+echo "Also please reboot your server when you have finished the config"
 
 exit
